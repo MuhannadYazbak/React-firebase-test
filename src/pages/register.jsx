@@ -43,22 +43,22 @@ const RegisterUser = () => {
     console.log("added user: ", user);
     navigate("/");
   };
-   const removeUser = () => {
-      deleteDoc(myCollection, this);
-      deleteUser(auth, this);
-  }
+  //  const removeUser = () => {
+  //     deleteDoc(myCollection, this);
+  //     deleteUser(auth, this);
+  // }
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(myCollection);
-      setUserList(
-        data.docs.map((doc) => ({
-          ...doc.data(),
-        }))
-      );
-    };
-    getUsers();
-  }, [userList, ""]);
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const data = await getDocs(myCollection);
+  //     setUserList(
+  //       data.docs.map((doc) => ({
+  //         ...doc.data(),
+  //       }))
+  //     );
+  //   };
+  //   getUsers();
+  // }, [userList, ""]);
 
   return (
     <div className="background">
@@ -107,7 +107,7 @@ const RegisterUser = () => {
       <div className="centered">
           <Button type="link" onClick={()=>navigate("/")}>Go to Log In</Button>
       </div>
-      <Space direction="horizental">
+      {/* <Space direction="horizental">
         {userList.map(({ name, email, phone, gender, password, dob }) => (
           <div className="userStyle">
             {i++} Name: {name} <br /> Email: {email} <br />
@@ -116,9 +116,8 @@ const RegisterUser = () => {
             DOB: {dob} <br />
             <Button onClick={removeUser}>Delete User</Button>
           </div>
-          //   i = i +1
         ))}
-      </Space>
+      </Space> */}
     </div>
   );
 };
