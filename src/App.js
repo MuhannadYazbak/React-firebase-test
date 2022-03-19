@@ -5,8 +5,9 @@ import LogIn from "./pages/log-in";
 import RegisterUser from "./pages/register";
 import React, { useState } from "react";
 import MainPage from "./pages/main";
+import Users from "./pages/users";
 import { Layout, Menu } from "antd";
-import { LoginOutlined, UserAddOutlined, WeiboSquareOutlined } from "@ant-design/icons";
+import { LoginOutlined, UserAddOutlined, WeiboSquareOutlined, UserOutlined } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
               <Menu.Item key="3" onClick={() => navigate("/main")} icon={<WeiboSquareOutlined />}>
                 Main Page
               </Menu.Item>
+              <Menu.Item key="4" onClick={() => navigate("/users")} icon={<UserOutlined />}>
+                Users
+              </Menu.Item>
             </Menu>
           </Sider>
           <Content>
@@ -38,6 +42,7 @@ function App() {
               <Route path="/" element={<LogIn setAuth={setAuth} />} />
               <Route path="/register" element={<RegisterUser />} />
               <Route path="/main" element={<MainPage auth={auth} />} />
+              <Route path="/users" element={<Users />} />
             </Routes>
           </Content>
         </Layout>
