@@ -1,0 +1,36 @@
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+  color: chocolate;
+}
+
+.background {
+  background-color: lightblue;
+  min-width: 100% !important;
+  min-height: 100% !important;
+}
+
+.formStyle {
+  background-color: white;
+  max-width: 100%;
+  min-width: 80%;
+  max-height: 100%;
+  min-height: 80%;
+  align-self: center;
+  height: max-content;
+  border-radius: 15px;
+  margin: 15px, 15px, 15px, 15px;
+  padding: 15px, 15px, 15px, 15px;
+}
+
+.userStyle {
+  height: max-content;
+  width: max-content;
+  background-color: gray;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: black;
+}
