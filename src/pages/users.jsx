@@ -5,11 +5,35 @@ import { userList } from "./register";
 import { collection, deleteDoc, getDocs } from "firebase/firestore";
 import { async } from "@firebase/util";
 import { db } from "../firebase-congfig";
+import Search from "antd/lib/input/Search";
 const Users = () => {
   const navigate = useNavigate("");
   const myCollection = collection(db, "users");
   let i = 1;
-  const [userList, setUserList] = useState([{}]);
+  // const data = [
+  //   {
+  //     name: "Muhannad Yazbak",
+  //     govId: "203368246",
+  //     email: "yazbakm@gmail.com",
+  //     phone: "0548034062",
+  //     password: "mypass123",
+  //     gender: "Male",
+  //     dob: "1991-03-08",
+  //     shifts: [
+  //       {
+  //         day: "Sunday",
+  //         hours: "02",
+  //       },
+  //       {
+  //         day: "Monday",
+  //         hours: "08",
+  //       },
+  //     ],
+  //   },
+  // ];
+  const [userList, setUserList] = useState([{
+    user: {},
+  }]);
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(myCollection);
@@ -21,13 +45,19 @@ const Users = () => {
     };
     getUsers();
   }, [userList, ""]);
+  
   const removeUser = async (e) => {
     await deleteDoc(myCollection, e);
   };
+  const handleSearch = (event) => {
+    console.log("Searching ... ", event);
+  };
 
   return (
-    <div style={{minHeight: '90vh'}}>
-      <Space direction="horizental">
+    <div style={{ minHeight: "190vh" }}>
+      <Search name="userSearch" onSubmit={handleSearch} placeholder="Find User" />
+      <br />
+      <Space direction="vertical" align="center">
         {userList.map(({ name, email, phone, gender, password, dob }) => (
           <div className="userStyle">
             {i++} Name: {name} <br /> Email: {email} <br />
@@ -39,9 +69,9 @@ const Users = () => {
         ))}
       </Space>
       <div>
-      <Button style={{marginTop: "25px"}} type="primary" onClick={() => navigate(-1)}>
-        Back
-      </Button>
+        <Button style={{ marginTop: "25px" }} type="primary" onClick={() => navigate(-1)}>
+          Back
+        </Button>
       </div>
     </div>
   );

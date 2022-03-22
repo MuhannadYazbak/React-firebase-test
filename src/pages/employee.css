@@ -1,0 +1,29 @@
+.layout {
+    background-color: lightgray;
+    min-height: 120vh;
+    min-width: 30vh;
+}
+
+.header {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.content {
+    border-radius: 12px;
+    background-color: transparent;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.employee {
+    border-style: solid;
+    border-color: aqua;
+    margin: 4px,4px,4px,4px;
+}

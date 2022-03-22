@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, DatePicker, Form, Input, Radio, Space, Table } from "antd";
+import { Button, DatePicker, Form, Input, Radio, Select, Space, TimePicker } from "antd";
 import { collection, addDoc, getDocs, deleteDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, deleteUser } from "firebase/auth";
 import "antd/dist/antd.css";
@@ -19,6 +19,7 @@ const RegisterUser = () => {
     gender: "",
   });
   const genders = ["Male", "Female", "Other"];
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const myCollection = collection(db, "users");
   let i = 1;
   const [userList, setUserList] = useState([{}]);
@@ -36,17 +37,19 @@ const RegisterUser = () => {
       dob: event.format("YYYY-MM-DD"),
     }));
   };
+  
   const { form } = Form.useForm();
+
   const writeToDB = async () => {
     await addDoc(myCollection, user);
     createUserWithEmailAndPassword(auth, user.email, user.password);
     console.log("added user: ", user);
     navigate("/");
   };
-  //  const removeUser = () => {
-  //     deleteDoc(myCollection, this);
-  //     deleteUser(auth, this);
-  // }
+   const removeUser = () => {
+      deleteDoc(myCollection, this);
+      deleteUser(auth, this);
+  }
 
   // useEffect(() => {
   //   const getUsers = async () => {
@@ -105,7 +108,9 @@ const RegisterUser = () => {
       </Form>
       <div className="centered">Already Registered log-in</div>
       <div className="centered">
-          <Button type="link" onClick={()=>navigate("/")}>Go to Log In</Button>
+        <Button type="link" onClick={() => navigate("/")}>
+          Go to Log In
+        </Button>
       </div>
       {/* <Space direction="horizental">
         {userList.map(({ name, email, phone, gender, password, dob }) => (

@@ -6,6 +6,7 @@ import RegisterUser from "./pages/register";
 import React, { useState } from "react";
 import MainPage from "./pages/main";
 import Users from "./pages/users";
+import AddEmployee from "./pages/employee";
 import { Layout, Menu } from "antd";
 import { LoginOutlined, UserAddOutlined, WeiboSquareOutlined, UserOutlined } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
@@ -35,6 +36,9 @@ function App() {
               <Menu.Item key="4" onClick={() => navigate("/users")} icon={<UserOutlined />}>
                 Users
               </Menu.Item>
+              <Menu.Item key="5" onClick={() => navigate("/addEmployee")} icon={<UserAddOutlined />}>
+                Add Employee
+              </Menu.Item>
             </Menu>
           </Sider>
           <Content>
@@ -43,6 +47,7 @@ function App() {
               <Route path="/register" element={<RegisterUser />} />
               <Route path="/main" element={<MainPage auth={auth} />} />
               <Route path="/users" element={<Users />} />
+              <Route path="/addEmployee" element={<AddEmployee />} />
             </Routes>
           </Content>
         </Layout>
