@@ -42,9 +42,17 @@ const Users = () => {
           ...doc.data(),
         }))
       );
+      console.log("Supposed to fetch now")
+      fetch("http://localhost:3000/users").then(response => response)
+      .then(res=>{
+        if (res && res.data) {
+        console.log("Fetched ",res.data);
+        }
+      })
     };
     getUsers();
-  }, [userList, ""]);
+  },[""] );
+  
   
   const removeUser = async (e) => {
     await deleteDoc(myCollection, e);

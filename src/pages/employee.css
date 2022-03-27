@@ -27,3 +27,11 @@
     border-color: aqua;
     margin: 4px,4px,4px,4px;
 }
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    /* background-color: aquamarine; */
+}
